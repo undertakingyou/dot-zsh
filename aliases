@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# SYSTEM
+alias shutdown='sudo shutdown now'
+alias restart='sudo reboot'
+alias suspend='sudo pm-suspend'
+
+# APT (linux only)
+alias apt-clean="sudo apt-get autoclean && sudo apt-get autoremove && sudo \
+                aptitude clean && sudo aptitude remove && apt-orphand"
+alias apt-filesearch="apt-file search"
+alias apt-install="sudo aptitude -R install"
+alias apt-orphand="sudo deborphan | xargs sudo aptitude -y purge"
+alias apt-reinstall="sudo aptitude -R reinstall"
+alias apt-remove="sudo aptitude remove"
+alias apt-search="aptitude search"
+alias apt-show="aptitude show"
+alias apt-update="sudo aptitude update"
+alias apt-upgrade="sudo aptitude update && sudo aptitude safe-upgrade"
+
+# DIRECTORY
+alias home="cd ~/"
+alias desktop="cd ~/Desktop"
+
+# DOCKER
+alias docker_clean_images="docker rmi $(docker images -a --filter=dangling=true -q)"
+alias docker_clean_ps="docker rm $(docker ps --filter=status=exited --filter=status=created -q)"
+alias dc="docker compose"
+
+
+# K8S
+alias k="kubectl"
+alias kns="kubens"
+alias ktx="kubectx"
