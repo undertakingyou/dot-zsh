@@ -4,3 +4,9 @@
 [submodule "plugins/zsh-syntax-highlighting"]
 	path = plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "plugins/fzf-git.sh"]
+	path = plugins/fzf-git.sh
+	url = https://github.com/junegunn/fzf-git.sh.git
+[submodule "plugins/eza"]
+	path = plugins/eza
+	url = https://github.com/eza-community/eza.git

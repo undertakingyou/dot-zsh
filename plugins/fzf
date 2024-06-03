@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+# FZF
+## Helper to collect my fzf changes in one place.
+## Lot of help and inspiration from [josean-dev](https://github.com/josean-dev)
+
+# Set up fzf key bindings and fuzzy completion
+# These two were used before I knew you could run fzf with the --zsh option in
+# an eval. The second is more portable, so I am using that for now, but kept
+# this here for documentation.
+# [ -s "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" ] && \. "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+# [ -s "/opt/homebrew/opt/fzf/shell/completion.zsh" ] && \. "/opt/homebrew/opt/fzf/shell/completion.zsh"
+eval "$(fzf --zsh)"
+
+# Use `fd` instead of `find`
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+_fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+    fd --type=d --hidden --exclude .git . "$1"
+}
+
+bindkey -r '^G'
+source $ZDOTDIR/plugins/fzf-git.sh/fzf-git.sh

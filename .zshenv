@@ -13,14 +13,17 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$ZDOTDIR/.zhistory"    # History filepath
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index} > /dev/null"; unset index # directory stack
 
 # EDITOR
 export EDITOR=vim
 export VISUAL=vim
 
-# TODO: Revisit this.
+# TODO: Revisit this. These don't seem to work, maybe it relies too much on
+# the old framework.
 # Source environment settings
-source "$ZDOTZSH/env.zsh"
+# [ -s "$ZDOTZSH/env.zsh" ] && \. "$ZDOTZSH/env.zsh"
 
 # GPG
 export GPG_TTY=$(tty)
@@ -45,6 +48,12 @@ F="$HOME/Projects/nix-helpers/zsh-nix-shell/nix-shell.plugin.zsh"; [ -s $F ] && 
 F="$HOME/Projects/nix-helpers/nix-zsh-completions/nix-zsh-completions.zsh"; [ -s $F ] && \. $F
 eval "$(direnv hook zsh)"
 
+# PATH
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+if [[ "$OSTYPE" = darwin*  && -d /opt/local ]]; then
+    export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+fi
+
 # HOMEBREW
 export BREW_BIN="/opt/homebrew/bin"
 if [ -d "$BREW_BIN" ]; then
@@ -59,4 +68,4 @@ if [[ -d "$ANDROID_SDK_ROOT" ]]; then
 fi
 
 # LOCAL
-source $HOME/.zshenv-local
+[ -s "$HOME/.zshenv-local" ] && \. "$HOME/.zshenv-local"

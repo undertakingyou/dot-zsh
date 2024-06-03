@@ -26,11 +26,13 @@ setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
 setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+unsetopt LIST_BEEP               # Turn off the alert
 
 # COLORS
 
+# TODO: dircolors is a linux thing, not for macos. Check if we want this
 # Override colors
-eval "$(dircolors -b $ZDOTDIR/dircolors)"
+# eval "$(dircolors -b $ZDOTDIR/dircolors)"
 
 # ALIASES
 
@@ -96,3 +98,6 @@ source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # SCRIPTS
 
 source $ZDOTDIR/scripts.zsh
+
+# FZF
+source $ZDOTDIR/plugins/fzf

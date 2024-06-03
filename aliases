@@ -21,6 +21,14 @@ alias apt-upgrade="sudo aptitude update && sudo aptitude safe-upgrade"
 # DIRECTORY
 alias home="cd ~/"
 alias desktop="cd ~/Desktop"
+# alias la="ls -AGl"
+# alias ls="ls -G"
+alias la="eza --color=always --icons=always --git --long --group --all"
+alias ls="eza --color=always --icons=always"
+alias lt="eza --color=always --icons=always --tree --level=3"
+
+# FILES
+alias cat="bat"
 
 # DOCKER
 alias docker_clean_images="docker rmi $(docker images -a --filter=dangling=true -q)"
