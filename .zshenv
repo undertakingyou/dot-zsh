@@ -19,11 +19,7 @@ for index ({1..9}) alias "$index"="cd +${index} > /dev/null"; unset index # dire
 # EDITOR
 export EDITOR=vim
 export VISUAL=vim
-
-# TODO: Revisit this. These don't seem to work, maybe it relies too much on
-# the old framework.
-# Source environment settings
-# [ -s "$ZDOTZSH/env.zsh" ] && \. "$ZDOTZSH/env.zsh"
+export TERM="xterm-256color"
 
 # GPG
 export GPG_TTY=$(tty)
