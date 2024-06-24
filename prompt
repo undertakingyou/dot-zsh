@@ -114,7 +114,7 @@ prompt_purification_setup() {
     # My pink: #FFC0CB
     # My orange: #FFA500
 
-    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#FFA500}λ%f:"
+    ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#FFA500}%f:"
     ZSH_THEME_GIT_PROMPT_DIRTY=""
     ZSH_THEME_GIT_PROMPT_CLEAN=""
 
@@ -122,9 +122,9 @@ prompt_purification_setup() {
     ZSH_THEME_GIT_PROMPT_MODIFIED="%F{blue}%f "
     ZSH_THEME_GIT_PROMPT_DELETED="%F{red}%f "
     ZSH_THEME_GIT_PROMPT_RENAMED="%F{magenta}➜%f "
-    ZSH_THEME_GIT_PROMPT_UNMERGED="%F{yellow}═%f "
+    ZSH_THEME_GIT_PROMPT_UNMERGED="%F{yellow}%f "
     ZSH_THEME_GIT_PROMPT_UNTRACKED="%F{#FFC0CB}%f "
-    ZSH_THEME_GIT_PROMPT_STASHED="%B%F{red}%f%b "
+    ZSH_THEME_GIT_PROMPT_STASHED="%B%F{red}%f%b "
     ZSH_THEME_GIT_PROMPT_BEHIND="%B%F{red}%f%b "
     ZSH_THEME_GIT_PROMPT_AHEAD="%B%F{green}%f%b "
 
