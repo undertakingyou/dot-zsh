@@ -1,6 +1,6 @@
 # Undertakingyou ZSH config
 
-After some time of using the the DOTZSH framework for some time, I decided that
+After some time of using the the DOTZSH framework, I decided that
 I wanted to greatly simplify my ZSH rc, and go back to something really simple
 and straightforward. This takes a lot of inspiration from
 [Phantas0s](https://github.com/Phantas0s/.dotfiles/tree/master/zsh).
