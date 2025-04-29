@@ -17,8 +17,8 @@ alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index} > /dev/null"; unset index # directory stack
 
 # EDITOR
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export TERM="xterm-256color"
 
 # GPG
