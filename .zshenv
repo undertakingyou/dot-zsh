@@ -42,10 +42,10 @@ export NVM_DIR="$HOME/.nvm"
 F="$HOME/.nix-profile/etc/profile.d/nix.sh"; [ -s $F ] && \. $F
 F="$HOME/Projects/nix-helpers/zsh-nix-shell/nix-shell.plugin.zsh"; [ -s $F ] && \. $F
 F="$HOME/Projects/nix-helpers/nix-zsh-completions/nix-zsh-completions.zsh"; [ -s $F ] && \. $F
-eval "$(direnv hook zsh)"
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 # PATH
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 if [[ "$OSTYPE" = darwin*  && -d /opt/local ]]; then
     export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 fi

@@ -101,3 +101,6 @@ source $ZDOTDIR/scripts.zsh
 
 # FZF
 source $ZDOTDIR/plugins/fzf
+
+# LOCAL
+[ -s "$HOME/.zshrc-local" ] && \. "$HOME/.zshrc-local"
