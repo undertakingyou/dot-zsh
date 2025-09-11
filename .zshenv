@@ -50,6 +50,12 @@ if [[ "$OSTYPE" = darwin*  && -d /opt/local ]]; then
     export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 fi
 
+# GOLANG
+export GOPATH=$HOME/go
+if [ -d "$GOPATH" ]; then
+    export PATH="$GOPATH/bin:$PATH"
+fi
+
 # HOMEBREW
 export BREW_BIN="/opt/homebrew/bin"
 if [ -d "$BREW_BIN" ]; then
