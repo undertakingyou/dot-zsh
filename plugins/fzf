@@ -4,13 +4,34 @@
 ## Helper to collect my fzf changes in one place.
 ## Lot of help and inspiration from [josean-dev](https://github.com/josean-dev)
 
+# Function to check if fzf version is >= 0.48
+fzf_version_check() {
+    local version_output
+    version_output=$(fzf --version 2>/dev/null) || return 1
+
+    local version
+    version=$(echo "$version_output" | head -1 | awk '{print $1}')
+
+    local major minor
+    major=$(echo "$version" | cut -d. -f1)
+    minor=$(echo "$version" | cut -d. -f2)
+
+    if [[ $major -gt 0 ]] || [[ $major -eq 0 && $minor -ge 48 ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # Set up fzf key bindings and fuzzy completion
 # These two were used before I knew you could run fzf with the --zsh option in
 # an eval. The second is more portable, so I am using that for now, but kept
 # this here for documentation.
 # [ -s "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" ] && \. "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 # [ -s "/opt/homebrew/opt/fzf/shell/completion.zsh" ] && \. "/opt/homebrew/opt/fzf/shell/completion.zsh"
-eval "$(fzf --zsh)"
+if fzf_version_check; then
+    eval "$(fzf --zsh)"
+fi
 
 # Use `fd` instead of `find`
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
