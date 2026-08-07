@@ -96,6 +96,16 @@ prompt_git_branch() {
     zstyle ':vcs_info:git:*' formats '%b'
 }
 
+prompt_worktree() {
+    local wt=""
+    local git_dir
+    git_dir=$(command git rev-parse --git-dir 2>/dev/null)
+    if [[ "$git_dir" == *"/.git/worktrees/"* ]]; then
+        wt="${ZSH_THEME_GIT_PROMPT_WORKTREE_PREFIX}%F{white}${git_dir##*/} "
+    fi
+    echo "${wt}"
+}
+
 prompt_git_info() {
     [ ! -z "$vcs_info_msg_0_" ] && echo "$ZSH_THEME_GIT_PROMPT_PREFIX%F{white}$vcs_info_msg_0_%f$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
@@ -114,6 +124,8 @@ prompt_purification_setup() {
     # My pink: #FFC0CB
     # My orange: #FFA500
 
+    ZSH_THEME_GIT_PROMPT_WORKTREE_PREFIX="%F{green}󰹩%f:"
+
     ZSH_THEME_GIT_PROMPT_PREFIX=" %F{#FFA500}%f:"
     ZSH_THEME_GIT_PROMPT_DIRTY=""
     ZSH_THEME_GIT_PROMPT_CLEAN=""
@@ -129,7 +141,7 @@ prompt_purification_setup() {
     ZSH_THEME_GIT_PROMPT_AHEAD="%B%F{green}%f%b "
 
     prompt_git_branch
-    RPROMPT='$(prompt_git_info) $(git_prompt_status)'
+    RPROMPT='$(prompt_worktree)$(prompt_git_info) $(git_prompt_status)'
     PROMPT=$'%F{yellow}%D{%Y-%m-%d} %T %F{white}%~ %B%F{#FFA500}%#>>>%f%b '
 }
 
